@@ -1,19 +1,17 @@
 ﻿apiVersion: v1
 kind: Service
 metadata:
-  name: webapi
+  name: testappsettings-webapi-service
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
-    service: webapi
+    app: webapi
   ports:
-    - port: 80
+    - port: 8080
       targetPort: 80
-      nodePort: 30007
       protocol: TCP
       name: http
-    - port: 443
+    - port: 8443
       targetPort: 443
-      nodePort: 30008
       protocol: TCP
       name: https

@@ -1,7 +1,7 @@
 ﻿apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webapi-deployment
+  name: testappsettings-webapi-deployment
   labels:
     app: webapi
 spec:
@@ -15,12 +15,14 @@ spec:
         app: webapi
     spec:
       containers:
-        - name: logging-demo-api
-          image: akasharya3/loggingdemo:latest
+        - name: testappsettings
+          image: akasharya3/testappsettings:latest
           imagePullPolicy: IfNotPresent
           env:
             - name: ASPNETCORE_URLS
               value: http://+:80;http://+:443
+            - name: TestRoot__Test.Value
+              value: "Kubernetes"
           ports:
             - containerPort: 80
               name: http
